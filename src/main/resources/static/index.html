@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select city</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+<select id="cities" autocomplete="off">
+    <option value="">Select city</option>
+    <option value="odessa">Odessa</option>
+    <option value="kiev">Kiev</option>
+    <option value="lutsk">Lutsk</option>
+</select>
+
+<div id="cinemaTable" style="display: none;">
+    <h2>Cinema</h2>
+    <table id="cinemaInfo">
+        <thead>
+            <tr>
+                <th>Cinema name</th>
+                <th>Adress</th>
+                <th>Seans</th>
+            </tr>
+        </thead>
+        <tbody id="cinemaBody">
+            <!-- placeholder -->
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
