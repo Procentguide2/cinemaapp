@@ -1,8 +1,6 @@
 package com.example.cinemaapp.service;
 
 import com.example.cinemaapp.model.SysUser;
-import com.example.cinemaapp.model.User;
-import com.example.cinemaapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

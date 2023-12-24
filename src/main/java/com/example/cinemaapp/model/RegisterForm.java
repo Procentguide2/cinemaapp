@@ -10,20 +10,15 @@ public class RegisterForm {
     private String password;
     private final String regexPattern = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";;
 
-    public RegisterForm(String login, String password) throws RegisterException {
-        if(patternMatches(login,regexPattern)){
-            this.login = login;
-            this.password = password;
-        }else {
-            throw new RegisterException("wrong email");
-        }
+    public RegisterForm() {
     }
 
-    public static boolean patternMatches(String emailAddress, String regexPattern) {
+    public boolean isEmailValid(String emailAddress) {
         return Pattern.compile(regexPattern)
                 .matcher(emailAddress)
                 .matches();
     }
+
 
     public String getLogin() {
         return login;
