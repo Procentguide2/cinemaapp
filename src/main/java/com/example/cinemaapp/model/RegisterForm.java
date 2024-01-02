@@ -1,7 +1,5 @@
 package com.example.cinemaapp.model;
 
-import com.example.cinemaapp.exception.RegisterException;
-
 import java.util.regex.Pattern;
 
 public class RegisterForm {

@@ -13,10 +13,22 @@ public class TheatreService {
     TheatreRepository repository;
 
     public Theatre findById(int id){
-        return repository.getById(id);
+        return repository.findById(id).get();
     }
 
     public List<Theatre> findAll(){
         return repository.findAll();
+    }
+
+    public Theatre saveTheatre(Theatre theatre){
+        return repository.save(theatre);
+    }
+
+    public List<Theatre> findAllByCityId(int cityId){
+        return repository.findAllByCityId(cityId);
+    }
+    public void deleteTheatre(int id){
+        Theatre toDelete = findById(id);
+        repository.delete(toDelete);
     }
 }

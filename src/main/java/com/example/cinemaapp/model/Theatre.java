@@ -13,7 +13,7 @@ public class Theatre {
     @Column(name = "t_name", length = 100)
     private String tName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "city_id")
     private City city;
 

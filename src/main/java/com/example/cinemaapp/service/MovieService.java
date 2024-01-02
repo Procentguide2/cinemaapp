@@ -1,9 +1,7 @@
 package com.example.cinemaapp.service;
 
 import com.example.cinemaapp.model.Movie;
-import com.example.cinemaapp.model.Theatre;
 import com.example.cinemaapp.repository.MovieRepository;
-import com.example.cinemaapp.repository.TheatreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +14,18 @@ public class MovieService {
     MovieRepository repository;
 
     public Movie findById(int id){
-        return repository.getById(id);
+        return repository.findById(id).get();
     }
 
     public List<Movie> findAll(){
         return repository.findAll();
+    }
+
+    public Movie saveMovie(Movie movie){
+        return repository.save(movie);
+    }
+    public void deleteMovie(int id){
+        Movie toDelete = findById(id);
+        repository.delete(toDelete);
     }
 }
