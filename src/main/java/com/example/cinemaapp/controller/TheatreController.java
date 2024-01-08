@@ -1,6 +1,7 @@
 package com.example.cinemaapp.controller;
 
-import com.example.cinemaapp.model.Theatre;
+import com.example.cinemaapp.dto.TheatreDto;
+import com.example.cinemaapp.dto.TheatreDtoId;
 import com.example.cinemaapp.service.TheatreService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -19,19 +20,19 @@ public class TheatreController {
 
     @GetMapping("/theatres")
     @Operation(summary = "Get all theatres")
-    public List<Theatre> getTheatres(){
+    public List<TheatreDtoId> getTheatres(){
         return theatreService.findAll();
     }
 
     @GetMapping("/theatres/{id}")
     @Operation(summary = "Get theatre by id")
-    public Theatre getTheatre(@PathVariable int id){
-        return theatreService.findById(id);
+    public TheatreDto getTheatre(@PathVariable int id){
+        return theatreService.getDtoById(id);
     }
 
     @GetMapping("/theatres/city/{id}")
     @Operation(summary = "Get theatres by city id")
-    public List<Theatre> getByCityId(@PathVariable int id){
+    public List<TheatreDtoId> getByCityId(@PathVariable int id){
         return theatreService.findAllByCityId(id);
     }
 
@@ -39,8 +40,17 @@ public class TheatreController {
     @Operation(summary = "Create theatre", description = "Create theatre in database(need JWT)")
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/theatres/create")
-    public Theatre createTheatre(@RequestBody Theatre theatre){
-        return theatreService.saveTheatre(theatre);
+    public void createTheatre(@RequestBody TheatreDto theatre) throws Exception {
+        theatreService.saveTheatre(theatre);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @Operation(summary = "Update theatre", description = "Update theatre using id and data")
+    @SecurityRequirement(name = "Bearer Authentication")
+    @PostMapping("/theatres/update/{id}")
+    public void updateTheatre(@RequestBody TheatreDto theatre, @PathVariable int id){
+        theatreService.updateTheatre(theatre,id);
+
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
