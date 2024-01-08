@@ -82,6 +82,10 @@ public class TheatreService {
         repository.delete(toDelete);
     }
 
+    public Theatre findById(int id) {
+        return repository.findById(id).get();
+    }
+
     private List<TheatreDtoId> toDtoList(List<Theatre> theatres) {
         List<TheatreDtoId> theatreDtos = new ArrayList<>();
         for (Theatre th : theatres) {
@@ -91,9 +95,6 @@ public class TheatreService {
         return theatreDtos;
     }
 
-    private Theatre findById(int id) {
-        return repository.findById(id).get();
-    }
 
     private boolean isTheatreExist(String theatreName) {
         boolean result;

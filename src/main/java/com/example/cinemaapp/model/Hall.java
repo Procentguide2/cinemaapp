@@ -20,8 +20,6 @@ public class Hall {
     @JoinColumn(name = "theatre_id")
     private Theatre theatre;
 
-    @Column(name = "adress", length = 100)
-    private String adress;
 
     public Integer getId() {
         return id;
@@ -55,12 +53,5 @@ public class Hall {
         this.theatre = theatre;
     }
 
-    public String getAdress() {
-        return adress;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
 
 }

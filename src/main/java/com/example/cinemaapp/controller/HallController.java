@@ -1,5 +1,7 @@
 package com.example.cinemaapp.controller;
 
+import com.example.cinemaapp.dto.HallDto;
+import com.example.cinemaapp.dto.HallDtoId;
 import com.example.cinemaapp.model.Hall;
 import com.example.cinemaapp.service.HallService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,22 +21,22 @@ public class HallController {
 
     @GetMapping("/halls")
     @Operation(summary = "Get all halls")
-    public List<Hall> getHalls(){
+    public List<HallDtoId> getHalls(){
         return hallService.findAll();
     }
 
     @GetMapping("/halls/{id}")
     @Operation(summary = "Get hall by id")
-    public Hall getHall(@PathVariable int id){
-        return hallService.findById(id);
+    public HallDto getHall(@PathVariable int id){
+        return hallService.findDtoById(id);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Create hall", description = "Create hall in database(need JWT)")
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/halls/create")
-    public Hall createHall(@RequestBody Hall hall){
-        return hallService.saveHall(hall);
+    public void createHall(@RequestBody HallDto hall){
+        hallService.saveHall(hall);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")

@@ -1,10 +1,14 @@
 package com.example.cinemaapp.service;
 
+import com.example.cinemaapp.dto.HallDto;
+import com.example.cinemaapp.dto.HallDtoId;
 import com.example.cinemaapp.model.Hall;
+import com.example.cinemaapp.model.Theatre;
 import com.example.cinemaapp.repository.HallRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -12,17 +16,41 @@ public class HallService {
     @Autowired
     HallRepository repository;
 
+    @Autowired
+    TheatreService theatreService;
+
     public Hall findById(int id){
         return repository.findById(id).get();
     }
 
-    public List<Hall> findAll(){
-        return repository.findAll();
+    public HallDto findDtoById(int id){
+        Hall hall = findById(id);
+        return new HallDto(hall.getName(),hall.getSeats(),hall.getTheatre().getId());
     }
 
-    public Hall saveHall(Hall hall){
-        return repository.save(hall);
+    public List<HallDtoId> findAll(){
+        List<Hall> halls = repository.findAll();
+        List<HallDtoId> hallDtos = new ArrayList<>();
+
+        for (Hall hall : halls){
+            HallDtoId hallDtoId = new HallDtoId(hall.getName(),hall.getSeats(),hall.getTheatre().getId(),hall.getId());
+            hallDtos.add(hallDtoId);
+        }
+        return hallDtos;
     }
+
+    public void saveHall(HallDto hallDto){
+        Hall hall = new Hall();
+        Theatre theatre = theatreService.findById(hallDto.getTheatreId());
+
+        hall.setName(hallDto.getName());
+        hall.setSeats(hallDto.getSeats());
+        hall.setTheatre(theatre);
+
+        repository.save(hall);
+    }
+
+
     public void deleteHall(int id){
         Hall toDelete = findById(id);
         repository.delete(toDelete);
