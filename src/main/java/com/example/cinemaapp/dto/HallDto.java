@@ -1,9 +1,5 @@
 package com.example.cinemaapp.dto;
 
-import com.example.cinemaapp.model.Theatre;
-
-import javax.persistence.criteria.CriteriaBuilder;
-
 public class HallDto {
 
     String name;

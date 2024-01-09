@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class HallService {
@@ -26,6 +27,10 @@ public class HallService {
     public HallDto findDtoById(int id){
         Hall hall = findById(id);
         return new HallDto(hall.getName(),hall.getSeats(),hall.getTheatre().getId());
+    }
+
+    public List<HallDto> findDtoByTheatreId(int id){
+        return findAll().stream().filter(hallDto -> id == hallDto.getTheatreId()).collect(Collectors.toList());
     }
 
     public List<HallDtoId> findAll(){

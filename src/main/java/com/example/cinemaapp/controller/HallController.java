@@ -2,7 +2,6 @@ package com.example.cinemaapp.controller;
 
 import com.example.cinemaapp.dto.HallDto;
 import com.example.cinemaapp.dto.HallDtoId;
-import com.example.cinemaapp.model.Hall;
 import com.example.cinemaapp.service.HallService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -29,6 +28,12 @@ public class HallController {
     @Operation(summary = "Get hall by id")
     public HallDto getHall(@PathVariable int id){
         return hallService.findDtoById(id);
+    }
+
+    @GetMapping("/halls/theatre/{id}")
+    @Operation(summary = "Get halls by theatre id")
+    public List<HallDto> getHallsByTheatreID(@PathVariable int id){
+        return hallService.findDtoByTheatreId(id);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
