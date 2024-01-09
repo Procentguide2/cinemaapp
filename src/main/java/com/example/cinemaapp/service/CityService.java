@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CityService {
@@ -22,6 +23,17 @@ public class CityService {
 
     public City createCity(City city){
         return repository.save(city);
+    }
+
+    public City findByName(String name){
+        return repository.findByCityName(name);
+    }
+
+    public boolean isCityExists(String cityName){
+        boolean result;
+        Optional<City> foundTheatre = Optional.ofNullable(findByName(cityName));
+        result = foundTheatre.isPresent();
+        return result;
     }
 
     public void deleteCity(int id){

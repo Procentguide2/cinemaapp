@@ -9,5 +9,6 @@ import java.util.Optional;
 public interface TheatreRepository extends JpaRepository<Theatre, Integer> {
 
     Optional<Theatre> findById(Integer id);
+    Theatre findByName(String name);
     List<Theatre> findAllByCityId(Integer cityId);
 }
