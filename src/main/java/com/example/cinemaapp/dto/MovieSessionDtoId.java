@@ -10,8 +10,8 @@ public class MovieSessionDtoId extends MovieSessionDto{
     }
 
 
-    public MovieSessionDtoId(Instant startDate, Float cost, Integer movieId, Integer hallId, Integer id) {
-        super(startDate, cost, movieId, hallId);
+    public MovieSessionDtoId(Instant startDate, Float cost, String availableSeats, Integer totalSeats, Integer movieId, Integer hallId, Integer id) {
+        super(startDate, cost, availableSeats, totalSeats, movieId, hallId);
         this.id = id;
     }
 

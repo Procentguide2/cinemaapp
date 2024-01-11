@@ -6,15 +6,21 @@ public class MovieSessionDto {
 
     private Instant startDate;
     private Float cost;
+
+    private String availableSeats;
+
+    private Integer totalSeats;
     private Integer movieId;
     private Integer hallId;
 
     public MovieSessionDto() {
     }
 
-    public MovieSessionDto(Instant startDate, Float cost, Integer movieId, Integer hallId) {
+    public MovieSessionDto(Instant startDate, Float cost, String availableSeats, Integer totalSeats, Integer movieId, Integer hallId) {
         this.startDate = startDate;
         this.cost = cost;
+        this.availableSeats = availableSeats;
+        this.totalSeats = totalSeats;
         this.movieId = movieId;
         this.hallId = hallId;
     }
@@ -33,6 +39,22 @@ public class MovieSessionDto {
 
     public void setCost(Float cost) {
         this.cost = cost;
+    }
+
+    public String getAvailableSeats() {
+        return availableSeats;
+    }
+
+    public void setAvailableSeats(String availableSeats) {
+        this.availableSeats = availableSeats;
+    }
+
+    public Integer getTotalSeats() {
+        return totalSeats;
+    }
+
+    public void setTotalSeats(Integer totalSeats) {
+        this.totalSeats = totalSeats;
     }
 
     public Integer getMovieId() {

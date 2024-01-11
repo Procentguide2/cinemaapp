@@ -8,8 +8,8 @@ public class TheatreDtoId extends TheatreDto{
         this.id = id;
     }
 
-    public TheatreDtoId(String theatreName, String cityName, String address, Integer id) {
-        super(theatreName, cityName, address);
+    public TheatreDtoId(String theatreName, String cityName, Integer cityId, String address, Integer id) {
+        super(theatreName, cityName, cityId, address);
         this.id = id;
     }
 
