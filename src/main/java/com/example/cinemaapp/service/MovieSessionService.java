@@ -69,8 +69,13 @@ public class MovieSessionService {
         repository.delete(toDelete);
     }
 
-    public void bookSeat(BookSeatForm form){
+    public void bookSeat(BookSeatForm form) throws Exception {
         MovieSession movieSession = findById(form.getSessionId());
+
+        if (form.getToBook() > movieSession.getHall().getSeats()){
+            throw new Exception();
+        }
+
         movieSession.setAvailableSeats(removeNumber(movieSession.getAvailableSeats(),form.getToBook()));
         repository.save(movieSession);
     }

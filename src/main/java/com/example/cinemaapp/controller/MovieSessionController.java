@@ -53,7 +53,7 @@ public class MovieSessionController {
     }
 
     @PostMapping("/sessions/book")
-    public void BookSeat(@RequestBody BookSeatForm form){
+    public void BookSeat(@RequestBody BookSeatForm form) throws Exception {
         sessionService.bookSeat(form);
     }
 

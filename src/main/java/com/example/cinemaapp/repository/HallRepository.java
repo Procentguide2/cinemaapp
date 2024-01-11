@@ -9,5 +9,7 @@ import java.util.Optional;
 public interface HallRepository extends JpaRepository<Hall, Integer> {
 
     Optional<Hall> findById(Integer id);
+
+    Hall findByNameAndTheatreId(String name, Integer theatre_id);
     List<Hall> findAllByTheatreId(Integer theatre_id);
 }
