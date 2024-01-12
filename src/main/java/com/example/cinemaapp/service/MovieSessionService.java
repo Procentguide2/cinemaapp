@@ -30,7 +30,7 @@ public class MovieSessionService {
         MovieSession movieSession = findById(id);
         return new MovieSessionDto(movieSession.getStartDate(),
                 movieSession.getCost(),
-                movieSession.getAvailableSeats(),
+                convertToArrayList(movieSession.getAvailableSeats()),
                 movieSession.getHall().getSeats(),
                 movieSession.getMovie().getId(),
                 movieSession.getHall().getId());
@@ -118,6 +118,19 @@ public class MovieSessionService {
         return sb.toString();
     }
 
+    private ArrayList<Integer> convertToArrayList(String input) {
+        ArrayList<Integer> integerList = new ArrayList<>();
+        String[] numbers = input.split(",\\s*");
+
+        for (String number : numbers) {
+            if (isInteger(number.trim())) {
+                integerList.add(Integer.parseInt(number.trim()));
+            }
+        }
+
+        return integerList;
+    }
+
 
     private List<MovieSessionDtoId> toDtoList(List<MovieSession> sessions){
         List<MovieSessionDtoId> dtos = new ArrayList<>();
@@ -125,7 +138,7 @@ public class MovieSessionService {
         for(MovieSession session : sessions){
             MovieSessionDtoId dto = new MovieSessionDtoId(session.getStartDate(),
                     session.getCost(),
-                    session.getAvailableSeats(),
+                    convertToArrayList(session.getAvailableSeats()),
                     session.getHall().getSeats(),
                     session.getMovie().getId(),
                     session.getHall().getId(),session.getId());

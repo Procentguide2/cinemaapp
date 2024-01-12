@@ -1,13 +1,14 @@
 package com.example.cinemaapp.dto;
 
 import java.time.Instant;
+import java.util.List;
 
 public class MovieSessionDto {
 
     private Instant startDate;
     private Float cost;
 
-    private String availableSeats;
+    private List<Integer> availableSeats;
 
     private Integer totalSeats;
     private Integer movieId;
@@ -16,7 +17,7 @@ public class MovieSessionDto {
     public MovieSessionDto() {
     }
 
-    public MovieSessionDto(Instant startDate, Float cost, String availableSeats, Integer totalSeats, Integer movieId, Integer hallId) {
+    public MovieSessionDto(Instant startDate, Float cost, List<Integer> availableSeats, Integer totalSeats, Integer movieId, Integer hallId) {
         this.startDate = startDate;
         this.cost = cost;
         this.availableSeats = availableSeats;
@@ -41,11 +42,11 @@ public class MovieSessionDto {
         this.cost = cost;
     }
 
-    public String getAvailableSeats() {
+    public List<Integer> getAvailableSeats() {
         return availableSeats;
     }
 
-    public void setAvailableSeats(String availableSeats) {
+    public void setAvailableSeats(List<Integer> availableSeats) {
         this.availableSeats = availableSeats;
     }
 
