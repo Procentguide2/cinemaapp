@@ -35,7 +35,7 @@ public class TheatreService {
 
     public void saveTheatre(TheatreDtoCreation theatreDto) throws Exception {
 
-        if (isTheatreExist(theatreDto.getTheatreName())) {
+        if (isTheatreExist(theatreDto.getTheatreName(),theatreDto.getCityId())) {
             throw new Exception("theatre already exists");
         }
 
@@ -81,9 +81,9 @@ public class TheatreService {
     }
 
 
-    private boolean isTheatreExist(String theatreName) {
+    private boolean isTheatreExist(String theatreName, Integer cityId) {
         boolean result;
-        Optional<Theatre> foundTheatre = Optional.ofNullable(repository.findByName(theatreName));
+        Optional<Theatre> foundTheatre = Optional.ofNullable(repository.findByNameAndCityId(theatreName,cityId));
         result = foundTheatre.isPresent();
         return result;
     }
