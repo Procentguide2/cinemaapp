@@ -50,7 +50,7 @@ public class HallService {
         Optional<Hall> foundHall = Optional.ofNullable(repository.findByNameAndTheatreId(hallDto.getName(), hallDto.getTheatreId()));
 
         if(foundHall.isPresent()){
-            throw new Exception();
+            throw new Exception("hall with this name already exists in this theatre");
         }
 
         Hall hall = new Hall();

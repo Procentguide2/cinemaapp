@@ -36,7 +36,7 @@ public class TheatreService {
     public void saveTheatre(TheatreDtoCreation theatreDto) throws Exception {
 
         if (isTheatreExist(theatreDto.getTheatreName(),theatreDto.getCityId())) {
-            throw new Exception("theatre already exists");
+            throw new Exception("theatre with this name already exists in this city");
         }
 
         Theatre theatre = new Theatre();

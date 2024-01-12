@@ -73,7 +73,7 @@ public class MovieSessionService {
         MovieSession movieSession = findById(form.getSessionId());
 
         if (form.getToBook() > movieSession.getHall().getSeats()){
-            throw new Exception();
+            throw new Exception("value is bigger than " + movieSession.getHall().getSeats());
         }
 
         movieSession.setAvailableSeats(removeNumber(movieSession.getAvailableSeats(),form.getToBook()));
