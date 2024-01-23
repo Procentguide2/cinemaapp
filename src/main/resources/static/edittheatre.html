@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Theatre editor</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+
+    <div id="cinemaInfo">
+        <h2 id="cinemaName"></h2>
+        <p id="cinemaAddress"></p>
+    </div>
+
+    <div id="sessionsTable">
+        <h2>List of sessions</h2>
+        <table id="sessionsInfo">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody id="sessionsBody">
+                <!-- placeholder -->
+            </tbody>
+        </table>
+        <div class="center" id="public_div">
+            <button id="UpdateTheatreData">Update</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/edittheatre.js"></script>
+</body>
+
+</html>
