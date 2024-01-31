@@ -1,0 +1,36 @@
+<!-- https://multiplex.ua/ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Select city</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body onload="init();">
+
+    <select id="cityes" autocomplete="off">
+    </select>
+    <a href="login.html">login</a>
+
+    <div id="cinemaTable" style="display: none;">
+        <h2 id="cityName">Cinema</h2>
+        <table id="cinemaInfo">
+            <thead>
+                <tr id="headers">
+                    <th>Cinema name</th>
+                    <th>Address</th>
+                    <th>Seans</th>
+                    <!-- <th>Edit</th> -->
+                </tr>
+            </thead>
+            <tbody id="cinemaBody"></tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/cityes.js"></script>
+</body>
+
+</html>

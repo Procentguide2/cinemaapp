@@ -19,6 +19,7 @@ const sessionsData = {
 };
 
 
+
 $(document).ready(function() {
     // get url params
     const urlParams = new URLSearchParams(window.location.search);
