@@ -1,6 +1,8 @@
 package com.example.cinemaapp.service;
 
+import com.example.cinemaapp.dto.BookSeatForm;
 import com.example.cinemaapp.dto.MovieSessionDto;
+import com.example.cinemaapp.dto.MovieSessionDtoCreation;
 import com.example.cinemaapp.dto.MovieSessionDtoId;
 import com.example.cinemaapp.model.Hall;
 import com.example.cinemaapp.model.MovieSession;
@@ -26,9 +28,10 @@ public class MovieSessionService {
 
     public MovieSessionDto getDtoById(int id){
         MovieSession movieSession = findById(id);
-        return new
-                MovieSessionDto(movieSession.getStartDate(),
+        return new MovieSessionDto(movieSession.getStartDate(),
                 movieSession.getCost(),
+                convertToArrayList(movieSession.getAvailableSeats()),
+                movieSession.getHall().getSeats(),
                 movieSession.getMovie().getId(),
                 movieSession.getHall().getId());
 
@@ -49,7 +52,7 @@ public class MovieSessionService {
         return toDtoList(sessions);
     }
 
-    public void saveSession(MovieSessionDto session){
+    public void saveSession(MovieSessionDtoCreation session){
         MovieSession movieSession = new MovieSession();
         Hall hall = hallService.findById(session.getHallId());
 
@@ -64,6 +67,40 @@ public class MovieSessionService {
     public void deleteSession(int id){
         MovieSession toDelete = findById(id);
         repository.delete(toDelete);
+    }
+
+    public void bookSeat(BookSeatForm form) throws Exception {
+        MovieSession movieSession = findById(form.getSessionId());
+
+        if (form.getToBook() > movieSession.getHall().getSeats()){
+            throw new Exception("value is bigger than " + movieSession.getHall().getSeats());
+        }
+
+        movieSession.setAvailableSeats(removeNumber(movieSession.getAvailableSeats(),form.getToBook()));
+        repository.save(movieSession);
+    }
+    public String removeNumber(String input, int toRemove) {
+        String[] numbers = input.split(",\\s*");
+        StringBuilder updatedList = new StringBuilder();
+
+        for (String number : numbers) {
+            if (isInteger(number.trim()) && Integer.parseInt(number.trim()) != toRemove) {
+                updatedList.append(number).append(", ");
+            }
+        }
+        if (updatedList.length() > 0) {
+            updatedList.setLength(updatedList.length() - 2);
+        }
+
+        return updatedList.toString();
+    }
+    private boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     private String generateSeats(Hall hall){
@@ -81,6 +118,19 @@ public class MovieSessionService {
         return sb.toString();
     }
 
+    private ArrayList<Integer> convertToArrayList(String input) {
+        ArrayList<Integer> integerList = new ArrayList<>();
+        String[] numbers = input.split(",\\s*");
+
+        for (String number : numbers) {
+            if (isInteger(number.trim())) {
+                integerList.add(Integer.parseInt(number.trim()));
+            }
+        }
+
+        return integerList;
+    }
+
 
     private List<MovieSessionDtoId> toDtoList(List<MovieSession> sessions){
         List<MovieSessionDtoId> dtos = new ArrayList<>();
@@ -88,6 +138,8 @@ public class MovieSessionService {
         for(MovieSession session : sessions){
             MovieSessionDtoId dto = new MovieSessionDtoId(session.getStartDate(),
                     session.getCost(),
+                    convertToArrayList(session.getAvailableSeats()),
+                    session.getHall().getSeats(),
                     session.getMovie().getId(),
                     session.getHall().getId(),session.getId());
             dtos.add(dto);

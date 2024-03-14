@@ -1,6 +1,8 @@
 package com.example.cinemaapp.controller;
 
+import com.example.cinemaapp.dto.BookSeatForm;
 import com.example.cinemaapp.dto.MovieSessionDto;
+import com.example.cinemaapp.dto.MovieSessionDtoCreation;
 import com.example.cinemaapp.dto.MovieSessionDtoId;
 import com.example.cinemaapp.service.MovieSessionService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -46,8 +48,13 @@ public class MovieSessionController {
     @Operation(summary = "Create session", description = "Create session in database(need JWT)")
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/sessions/create")
-    public void createSession(@RequestBody MovieSessionDto session){
+    public void createSession(@RequestBody MovieSessionDtoCreation session){
         sessionService.saveSession(session);
+    }
+
+    @PostMapping("/sessions/book")
+    public void BookSeat(@RequestBody BookSeatForm form) throws Exception {
+        sessionService.bookSeat(form);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")

@@ -1,6 +1,7 @@
 package com.example.cinemaapp.service;
 
 import com.example.cinemaapp.dto.TheatreDto;
+import com.example.cinemaapp.dto.TheatreDtoCreation;
 import com.example.cinemaapp.dto.TheatreDtoId;
 import com.example.cinemaapp.model.City;
 import com.example.cinemaapp.model.Theatre;
@@ -21,7 +22,10 @@ public class TheatreService {
 
     public TheatreDto getDtoById(int id) {
         Theatre theatre = findById(id);
-        return new TheatreDto(theatre.getName(), theatre.getCity().getCityName(), theatre.getAddress());
+        return new TheatreDto(theatre.getName(),
+                theatre.getCity().getCityName(),
+                theatre.getCity().getId(),
+                theatre.getAddress());
     }
 
     public List<TheatreDtoId> findAll() {
@@ -29,45 +33,26 @@ public class TheatreService {
         return toDtoList(theatres);
     }
 
-    public void saveTheatre(TheatreDto theatreDto) throws Exception {
+    public void saveTheatre(TheatreDtoCreation theatreDto) throws Exception {
 
-        if (isTheatreExist(theatreDto.getTheatreName())) {
-            throw new Exception("theatre already exists");
+        if (isTheatreExist(theatreDto.getTheatreName(),theatreDto.getCityId())) {
+            throw new Exception("theatre with this name already exists in this city");
         }
 
         Theatre theatre = new Theatre();
         theatre.setName(theatreDto.getTheatreName());
         theatre.setAddress(theatreDto.getAddress());
+        theatre.setCity(cityService.findById(theatreDto.getCityId()));
 
-        Optional<City> foundCity = Optional.ofNullable(cityService.findByName(theatreDto.getCityName()));
-
-        if (foundCity.isPresent()) {
-            theatre.setCity(foundCity.get());
-        } else {
-            City city = new City();
-            city.setCityName(theatreDto.getCityName());
-            cityService.createCity(city);
-            theatre.setCity(city);
-        }
         repository.save(theatre);
     }
 
-    public void updateTheatre(TheatreDto form, int idTheatre) {
-        City city;
+    public void updateTheatre(TheatreDtoCreation form, int idTheatre) {
         Theatre theatre = findById(idTheatre);
 
         theatre.setAddress(form.getAddress());
         theatre.setName(form.getTheatreName());
-
-        if (cityService.isCityExists(form.getCityName())) {
-            city = cityService.findByName(form.getCityName());
-            theatre.setCity(city);
-        } else {
-            city = new City();
-            city.setCityName(form.getCityName());
-            cityService.createCity(city);
-            theatre.setCity(city);
-        }
+        theatre.setCity(cityService.findById(form.getCityId()));
 
         repository.save(theatre);
     }
@@ -89,16 +74,16 @@ public class TheatreService {
     private List<TheatreDtoId> toDtoList(List<Theatre> theatres) {
         List<TheatreDtoId> theatreDtos = new ArrayList<>();
         for (Theatre th : theatres) {
-            TheatreDtoId theatreDto = new TheatreDtoId(th.getName(), th.getCity().getCityName(), th.getAddress(), th.getId());
+            TheatreDtoId theatreDto = new TheatreDtoId(th.getName(), th.getCity().getCityName(),th.getCity().getId(), th.getAddress(), th.getId());
             theatreDtos.add(theatreDto);
         }
         return theatreDtos;
     }
 
 
-    private boolean isTheatreExist(String theatreName) {
+    private boolean isTheatreExist(String theatreName, Integer cityId) {
         boolean result;
-        Optional<Theatre> foundTheatre = Optional.ofNullable(repository.findByName(theatreName));
+        Optional<Theatre> foundTheatre = Optional.ofNullable(repository.findByNameAndCityId(theatreName,cityId));
         result = foundTheatre.isPresent();
         return result;
     }
