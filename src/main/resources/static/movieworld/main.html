@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Title</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+    </head>
+    <body onload="init();">
+
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+                <div uk-navbar>
+        
+                    <div class="uk-navbar-center">
+        
+                        <div class="uk-navbar-center-left">
+                            <ul class="uk-navbar-nav">
+                                <li class="uk-active"><a href="#">Cinema Theaters</a></li>
+                                <li>
+                                    <a href="#">Menu</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li class="uk-active"><a href="#">Cinema Theaters</a></li>
+                                            <li><a href="#">Choose a movie</a></li>
+                                            <li><a href="#">choose a cinema</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <a class="uk-navbar-item uk-logo" href="main.html">Movie World</a>
+                        <div class="uk-navbar-center-right">
+                            <ul class="uk-navbar-nav">
+                                <li><a href="#">HOME</a></li>
+                                <li><a href="/src/main/resources/static/movieworld/login.html">Login</a></li>
+                            </ul>
+                        </div>
+        
+                    </div>
+        
+                </div>
+            </div>
+        </nav>
+
+        
+        <div class="uk-cover-container">
+            <canvas width="559" height="240"></canvas>
+            <img src="images/header.jpg" alt="" uk-cover>
+        </div>
+
+
+        <div class="uk-container">
+            <div class="uk-placeholder"></div>
+            
+            <!-- <ul uk-tab>
+                <li><a href="#">Odessa</a></li>
+                <li><a href="#">Kiev</a></li>
+                <li><a href="#">Lutsk</a></li>
+                <li><a href="#">Rivne</a></li>
+                <li><a href="#">New York</a></li>
+                <li><a href="#">Los Angeles</a></li>
+                <li><a href="#">Chicago</a></li>
+                <li><a href="#">Marengo</a></li>
+            </ul>
+            
+            <ul class="uk-switcher uk-margin">
+                <li>
+                    <table class="uk-table uk-table-justify uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th class="uk-width-small">Cinema name</th>
+                                <th>Address</th>
+                                <th>Seans</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Odesa 0</td>
+                                <td>Dovjenko 65</td>
+                                <td><button class="uk-button uk-button-default" type="button">view sessions</button></td>
+                            </tr>
+                            <tr>
+                                <td>Dyke</td>
+                                <td>Mallaya Arnautskaya 230</td>
+                                <td><button class="uk-button uk-button-default" type="button">view sessions</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li>
+                    <table class="uk-table uk-table-justify uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th class="uk-width-small">Cinema name</th>
+                                <th>Address</th>
+                                <th>Seans</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Odesa 1</td>
+                                <td>Dovjenko 65</td>
+                                <td><button class="uk-button uk-button-default" type="button">view sessions</button></td>
+                            </tr>
+                            <tr>
+                                <td>Dyke</td>
+                                <td>Mallaya Arnautskaya 230</td>
+                                <td><button class="uk-button uk-button-default" type="button">view sessions</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li>
+                    <table class="uk-table uk-table-justify uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th class="uk-width-small">Cinema name</th>
+                                <th>Address</th>
+                                <th>Seans</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Odesa 2</td>
+                                <td>Dovjenko 65</td>
+                                <td><button class="uk-button uk-button-default" type="button">view sessions</button></td>
+                            </tr>
+                            <tr>
+                                <td>Dyke</td>
+                                <td>Mallaya Arnautskaya 230</td>
+                                <td><button class="uk-button uk-button-default" type="button">view sessions</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                
+                <li>
+                    <table class="uk-table uk-table-justify uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th class="uk-width-small">Cinema name</th>
+                                <th>Address</th>
+                                <th>Seans</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Odesa 3</td>
+                                <td>Dovjenko 65</td>
+                                <td><button class="uk-button uk-button-default" type="button">view sessions</button></td>
+                            </tr>
+                            <tr>
+                                <td>Dyke</td>
+                                <td>Mallaya Arnautskaya 230</td>
+                                <td><button class="uk-button uk-button-default" type="button">view sessions</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+
+                <li>
+                    <table class="uk-table uk-table-justify uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th class="uk-width-small">Cinema name</th>
+                                <th>Address</th>
+                                <th>Seans</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Odesa 4</td>
+                                <td>Dovjenko 65</td>
+                                <td><button class="uk-button uk-button-default" type="button">view sessions</button></td>
+                            </tr>
+                            <tr>
+                                <td>Dyke</td>
+                                <td>Mallaya Arnautskaya 230</td>
+                                <td><button class="uk-button uk-button-default" type="button">view sessions</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+
+            </ul> -->
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="jsm/common.js"></script>
+        <script src="jsm/main.js"></script>
+
+    </body>
+</html>

@@ -23,7 +23,7 @@ function submitForm() {
             console.log("---------------------");
             console.log(GetToken());
             console.log(IsAdmin());
-            window.location.href = 'cityes.html';
+            window.location.href = '/src/main/resources/static';
         },
         error: function (error) {
             console.error('ERROR:', error);

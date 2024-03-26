@@ -1,13 +1,13 @@
 const endPoints = {
     cities: {
-        url: 'http://localhost:8080/cities',
+        url: 'http://192.168.0.179:8080/cities',
         options: {
             method: 'GET',
             headers: { 'Content-Type': 'application/json;charset=utf-8' }
         }
     },
     theatres: {
-        url: 'http://localhost:8080/theatres/city/',
+        url: 'http://192.168.0.179:8080/theatres/city/',
         options: {
             method: 'GET',
             headers: { 'Content-Type': 'application/json;charset=utf-8' }
