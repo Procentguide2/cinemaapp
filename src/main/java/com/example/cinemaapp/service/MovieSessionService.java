@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class MovieSessionService {
@@ -49,6 +51,14 @@ public class MovieSessionService {
 
     public List<MovieSessionDtoId> findAllByHallId(Integer id){
         List<MovieSession> sessions = repository.findAllByHallId(id);
+        return toDtoList(sessions);
+    }
+
+    public List<MovieSessionDtoId> findAllByTheaterId(Integer id){
+        List<MovieSession> sessions = repository.findAll()
+                .stream()
+                .filter(session -> Objects.equals(session.getHall().getTheatre().getId(), id))
+                .collect(Collectors.toList());
         return toDtoList(sessions);
     }
 
