@@ -22,7 +22,6 @@ function IsAdmin() {
         ?.split("=")[1];
 
     return isAdmin == "true" ? true : false;
-    // return true;
 }
 
 const LoadData = async (_url, optons = {}) => {

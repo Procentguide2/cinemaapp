@@ -21,7 +21,7 @@ const endPoints = {
 this.ard = [];
 this.asrdCount = 0;
 
-function GetCityes() {
+function GetTheatre() {
     LoadData(endPoints.cityes.url, endPoints.cityes.options)
         .then((data) => {
             $('.uk-placeholder').empty();
@@ -77,11 +77,11 @@ function PrintTheaters() {
         </thead>`;
         let tableBody = `<tbody>`;
     $.each(cinemasData, function (index, cinema) {
-        const editButton = '<td><button class="uk-button uk-button-default" type="button">edit</button></td>';
+        const editButton = `<td><a class="uk-button uk-button-default" href="sessions.html?cinemaId=${cinema.id}">edit</a></td>`;
         const tr = `<tr>
             <td>${cinema.theatreName}</td>
             <td>${cinema.address}</td>
-            <td><button class="uk-button uk-button-default" type="button">sessions</button></td>
+            <td><a class="uk-button uk-button-default" href="sessions.html?cinemaId=${cinema.id}">sessions</a></td>
             ${IsAdmin() ? editButton : ''}
         </tr>`;
 
@@ -89,10 +89,10 @@ function PrintTheaters() {
     });
     tableBody += '</tbody>';
 
-    let row = `<table class="uk-table uk-table-justify uk-table-divider"> ${tableHead} ${tableBody} </table>`;
+    let row = `<table class="uk-table uk-table-justify uk-table-divider uk-table-striped"> ${tableHead} ${tableBody} </table>`;
     return row;
 }
 
 $(document).ready(function () {
-    GetCityes();
+    GetTheatre();
 });
