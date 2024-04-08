@@ -1,6 +1,17 @@
+function getHost() {
+    return "http://192.168.0.179:8080/";
+}
+
+function getRoot() {
+    return "/src/main/resources/";
+}
+
+
+
+
 function SetToken(token, admin) {
-    document.cookie = `access_token=${token}; Secure`;
-    document.cookie = `isAdmin=${admin}; Secure`;
+    document.cookie = `access_token=${token};`;
+    document.cookie = `isAdmin=${admin};`;
     console.log(token, admin);
     tk = document.cookie.split("=");
     console.log(document.cookie);
@@ -42,3 +53,22 @@ const LoadData = async (_url, optons = {}) => {
     }
     return data
 };
+
+async function LoadDataAsync(_url, optons = {}){
+    const response = await fetch(_url, optons);
+    let data;
+    if (response.ok) {
+        try {
+            data = await response.json();
+        } catch (error) {
+            data = await "{}";
+        }
+    } else {
+        try {
+            data = await response.text();
+        } catch (error) {
+            data = await "{}";
+        }
+    }
+    return data
+}

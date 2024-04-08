@@ -14,7 +14,7 @@ function submitForm() {
 
     $.ajax({
         type: 'POST',
-        url: 'http://192.168.0.179:8080/user/authenticate',
+        url: `${getHost()}user/authenticate`,
         data: JSON.stringify(requestData),
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
         success: function (response) {
@@ -23,7 +23,7 @@ function submitForm() {
             console.log("---------------------");
             console.log(GetToken());
             console.log(IsAdmin());
-            window.location.href = '/src/main/resources/static';
+            window.location.href = `${getRoot()}static`;
         },
         error: function (error) {
             console.error('ERROR:', error);

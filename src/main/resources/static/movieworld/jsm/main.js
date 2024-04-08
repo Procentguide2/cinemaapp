@@ -2,14 +2,14 @@ var cinemasData = null;
 
 const endPoints = {
     cityes: {
-        url: 'http://192.168.0.179:8080/cities',
+        url: `${getHost()}cities`,
         options: {
             method: 'GET',
             headers: { 'Content-Type': 'application/json;charset=utf-8' }
         }
     },
     theatres: {
-        url: 'http://192.168.0.179:8080/theatres/city/',
+        url: `${getHost()}theatres/city/`,
         options: {
             method: 'GET',
             headers: { 'Content-Type': 'application/json;charset=utf-8' }
@@ -77,7 +77,7 @@ function PrintTheaters() {
         </thead>`;
         let tableBody = `<tbody>`;
     $.each(cinemasData, function (index, cinema) {
-        const editButton = `<td><a class="uk-button uk-button-default" href="sessions.html?cinemaId=${cinema.id}">edit</a></td>`;
+        const editButton = `<td><a class="uk-button uk-button-default" href="edittheatre.html?cinemaId=${cinema.id}">edit</a></td>`;
         const tr = `<tr>
             <td>${cinema.theatreName}</td>
             <td>${cinema.address}</td>
@@ -89,7 +89,7 @@ function PrintTheaters() {
     });
     tableBody += '</tbody>';
 
-    let row = `<table class="uk-table uk-table-justify uk-table-divider uk-table-striped"> ${tableHead} ${tableBody} </table>`;
+    let row = `<table class="uk-table uk-table-striped uk-table-hover uk-table-middle"> ${tableHead} ${tableBody} </table>`;
     return row;
 }
 
