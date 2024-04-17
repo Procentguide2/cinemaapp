@@ -29,6 +29,17 @@ const endPoints = {
             body: "{}"
         }
     },
+    theatresUpdate: {
+        url: `${getHost()}theatres/update/`,
+        options: {
+            method: 'POST',
+            headers: {
+                'Authorization': ``,
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: "{}"
+        }
+    },
     theatresDelete: {
         url: `${getHost()}theatres/`,
         options: {
@@ -43,6 +54,8 @@ function GetCityes() {
         .then((data) => {
             $('#selectCity').empty();
             $('#cityName').val('');
+            $('#theatreName').val('');
+            $('#address').val('');
             let cityNames = '<option value="-1">Select City</option>';
             data.forEach(element => {
                 let line = `<option value="${element.id}">${element.cityName}</option>`;
@@ -61,6 +74,7 @@ function GetTheatres() {
             $('#selectTheatre').empty();
             $('#address').empty();
             $('#theatreName').val('');
+            $('#address').val('');
             let theatreNames = '<option value="-1">Select Theatre</option>';
             data.forEach(element => {
                 let line = `<option value="${element.id}">${element.theatreName}</option>`;
@@ -86,7 +100,7 @@ function AddTheater() {
     LoadData(endPoints.theatresCreate.url, endPoints.theatresCreate.options)
         .then((data) => {
             console.log(data);
-            // location.reload();
+            location.reload();
         }
         );
 }
@@ -115,9 +129,9 @@ function EditTheater() {
         address: $('#address').val(),
         cityId: Number($('#selectCity').val()),
     }
-    endPoints.theatresCreate.options.body = JSON.stringify(body);
-    endPoints.theatresCreate.options.headers.Authorization = `Bearer ${GetToken()}`;
-    LoadData(endPoints.theatresCreate.url, endPoints.theatresCreate.options)
+    endPoints.theatresUpdate.options.body = JSON.stringify(body);
+    endPoints.theatresUpdate.options.headers.Authorization = `Bearer ${GetToken()}`;
+    LoadData(endPoints.theatresUpdate.url + selectedTheatreID, endPoints.theatresUpdate.options)
         .then((data) => {
             console.log(data);
             GetCityes();
