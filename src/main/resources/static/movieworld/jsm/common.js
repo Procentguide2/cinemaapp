@@ -3,7 +3,7 @@ function getHost() {
 }
 
 function getRoot() {
-    return "/src/main/resources/";
+    return "/src/main/resources/static";
 }
 
 

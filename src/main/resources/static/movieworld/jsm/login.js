@@ -23,7 +23,7 @@ function submitForm() {
             console.log("---------------------");
             console.log(GetToken());
             console.log(IsAdmin());
-            window.location.href = `${getRoot()}static`;
+            window.location.href = `${getRoot()}`;
         },
         error: function (error) {
             console.error('ERROR:', error);
