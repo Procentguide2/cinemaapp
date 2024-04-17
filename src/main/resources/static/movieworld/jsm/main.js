@@ -1,4 +1,5 @@
 var cinemasData = null;
+var cityesData = null;
 
 const endPoints = {
     cityes: {
@@ -21,9 +22,12 @@ const endPoints = {
 this.ard = [];
 this.asrdCount = 0;
 
-function GetTheatre() {
+function GetCityes() {
     LoadData(endPoints.cityes.url, endPoints.cityes.options)
         .then((data) => {
+            cityesData = data;
+            console.log(cityesData);
+
             $('.uk-placeholder').empty();
             let cityNames = "";
             data.forEach(element => {
@@ -34,15 +38,17 @@ function GetTheatre() {
             $('.uk-placeholder').append(`<ul uk-tab>${cityNames}</ul>`);
             $('.uk-placeholder').append(`<ul class="uk-switcher uk-margin"></ul>`);
 
-            GetTheaters(1, data.length);
+            GetTheaters(0, data.length);
         }
         );
 }
 
 function GetTheaters(idCity, end) {
-    LoadData(endPoints.theatres.url + idCity, endPoints.theatres.options)
+    let id = cityesData[idCity].id;
+    LoadData(endPoints.theatres.url + id, endPoints.theatres.options)
         .then((data) => {
             cinemasData = data;
+            console.log(endPoints.theatres.url + id);
             this.ard.push(PrintTheaters());
             this.asrdCount += 1;
             if (this.asrdCount >= end) {
@@ -94,5 +100,6 @@ function PrintTheaters() {
 }
 
 $(document).ready(function () {
-    GetTheatre();
+    GetCityes();
+    IsAdmin() ? $("#admin").show() : $("#admin").hide();
 });

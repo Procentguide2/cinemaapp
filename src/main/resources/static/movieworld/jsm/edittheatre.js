@@ -74,9 +74,13 @@ function GetTheater(cinemaId) {
 }
 
 function PrintTheater() {
+    console.log(theatreData);
+    Object.keys(theatreData).forEach(key => {
+        console.log(`${key}: ${theatreData[key]}`);
+    });
+
     $('#cinemaName').text(theatreData.theatreName);
     $('#cinemaAddress').text(theatreData.address);
-    // const sessionsBody = $('#sessionsBody');
     const sessionsBody = $('.uk-placeholder');
     sessionsBody.empty();
     let sityes = "";
@@ -101,6 +105,7 @@ function PrintTheater() {
                     '</td>' +
                 '</tr>';
     sessionsBody.append(row);
+    
     $('#cityes').change(function () {
         var selectedCity = $(this).val();
         thData.cityId = selectedCity;
@@ -114,8 +119,13 @@ function init() {
 $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const cinemaId = urlParams.get('cinemaId');
-    document.getElementById('UpdateTheatreData').addEventListener('click', function () {
-        UpdateTheater(cinemaId);
-    });
-    GetTheater(cinemaId);
+    if (cinemaId && IsAdmin()) {
+        document.getElementById('UpdateTheatreData').addEventListener('click', function () {
+            UpdateTheater(cinemaId);
+        });
+        GetTheater(cinemaId);
+    } else {
+        $('.uk-placeholder').hide();
+        $('#UpdateTheatreData').hide();
+    }
 });
