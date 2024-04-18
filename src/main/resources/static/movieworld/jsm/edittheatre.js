@@ -6,14 +6,14 @@ var testCounter = 0;
 
 const endPoints = {
     theatre: {
-        url: 'http://192.168.0.179:8080/theatres/',
+        url: `${getHost()}theatres/`,
         options: {
             method: 'GET',
             headers: { 'Content-Type': 'application/json;charset=utf-8' }
         }
     },
     theatreUpdate: {
-        url: 'http://192.168.0.179:8080/theatres/update/',
+        url: `${getHost()}theatres/update/`,
         options: {
             method: 'POST',
             headers: {
@@ -24,7 +24,7 @@ const endPoints = {
         }
     },
     cityes: {
-        url: 'http://192.168.0.179:8080/cities/',
+        url: `${getHost()}cities/`,
         options: {
             method: 'GET',
             headers: { 'Content-Type': 'application/json;charset=utf-8' }
