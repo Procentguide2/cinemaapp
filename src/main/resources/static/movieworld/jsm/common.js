@@ -1,9 +1,11 @@
 function getHost() {
-    return "http://192.168.0.179:8080/";
+    // return "http://192.168.0.179:8080/";
+    return "/";
 }
 
 function getRoot() {
-    return "/src/main/resources/static";
+    // return "/src/main/resources/static";
+    return "/";
 }
 
 
