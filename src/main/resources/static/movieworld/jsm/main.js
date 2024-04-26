@@ -71,23 +71,23 @@ function init() {
 
 
 function PrintTheaters() {
-    const editHeader = '<th class="uk-width-small">EDIT</th>';
+    const editHeader = '<th class="uk-width-small"></th>';
     let tableHead = `
         <thead>
             <tr>
-                <th class="uk-width-small">Cinema name</th>
-                <th>Address</th>
-                <th class="uk-width-small">Seans</th>
+                <th class="uk-width-small">Назва театру</th>
+                <th>Адреса</th>
+                <th class="uk-width-small"></th>
                 ${IsAdmin() ? editHeader : ''}
             </tr>
         </thead>`;
         let tableBody = `<tbody>`;
     $.each(cinemasData, function (index, cinema) {
-        const editButton = `<td><a class="uk-button uk-button-default" href="edittheatre.html?cinemaId=${cinema.id}">edit</a></td>`;
+        const editButton = `<td><a class="uk-button uk-button-default uk-button-small" href="edittheatre.html?cinemaId=${cinema.id}">редагувати</a></td>`;
         const tr = `<tr>
             <td>${cinema.theatreName}</td>
             <td>${cinema.address}</td>
-            <td><a class="uk-button uk-button-default" href="sessions.html?cinemaId=${cinema.id}">sessions</a></td>
+            <td><a class="uk-button uk-button-default uk-button-small" href="sessions.html?cinemaId=${cinema.id}">до сеансу</a></td>
             ${IsAdmin() ? editButton : ''}
         </tr>`;
 

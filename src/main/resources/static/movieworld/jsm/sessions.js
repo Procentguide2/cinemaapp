@@ -109,12 +109,11 @@ function GetSessionsByTheater() {
                 <table class="uk-table uk-table-striped uk-table-hover uk-table-middle">
                     <thead>
                         <tr>
-                            <th class="uk-width-1-4">Movie name</th>
-                            <th class="uk-width-1-4">Hall name</th>
-                            <th class="uk-width-small">Ticket price</th>
-                            <th class="uk-width-small">Start time</th>
-                            <th class="uk-width-small">Duration</th>
-                            <th class="uk-width-small">Buy</th>
+                            <th class="uk-width-1-4">Назва Кино</th>
+                            <th class="uk-width-1-4">Назва Театру</th>
+                            <th class="uk-width-small">Ціна</th>
+                            <th class="uk-width-small">Початок</th>
+                            <th class="uk-width-small"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -139,11 +138,10 @@ function renderSessions(sessions) {
         <td>[hall]</td>
         <td>[cost] ₴</td>
         <td>[startDate]</td>
-        <td>1h 20m</td>
-        <td><a class="uk-button uk-button-default" href="#">Buy</a></td>
+        <td><a class="uk-button uk-button-default uk-button-small" href="seansbuy.html?sessionId=[sessionId]">Купити</a></td>
     </tr>
     `;
-
+    console.log(sessions);
     let line = "";
         sessions.forEach(session => {
             const hall = this.halls_data.find(hall => hall.id === session.hallId);
@@ -152,6 +150,7 @@ function renderSessions(sessions) {
             line = line.replace('[name]', movie.movieName );
             line = line.replace('[cost]', session.cost );
             line = line.replace('[startDate]', session.startDate );
+            line = line.replace('[sessionId]', session.id );
             lines += line;
         });
     
