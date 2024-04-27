@@ -216,6 +216,8 @@ $(document).ready(function () {
     debug = debug == 'true' ? true : false;
     
     UpdateMoviesData();
+    
+    IsAdmin() ? $("#admin").show() : $("#admin").hide();
 });
 
 

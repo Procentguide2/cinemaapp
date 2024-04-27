@@ -209,6 +209,8 @@ $(document).ready(function () {
 
     UpdateSeansData();
 
+    IsAdmin() ? $("#admin").show() : $("#admin").hide();
+    
     $('#buyButton').click(function() {
         console.log("BUY", seatNumbers);
     
