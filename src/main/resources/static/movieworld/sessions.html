@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seanses</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+    </head>
+    <body onload="init();">
+
+        <nav class="uk-navbar-container">
+            <div class="uk-container">
+                <div uk-navbar>
+        
+                    <div class="uk-navbar-center">
+        
+                        <div class="uk-navbar-center-left">
+                            <ul class="uk-navbar-nav">
+                                <li class="uk-active"><a href="index.html">Cinema Theaters</a></li>
+                            </ul>
+                        </div>
+                        <a class="uk-navbar-item uk-logo" href="index.html">Movie World</a>
+                        <div class="uk-navbar-center-right">
+                            <ul class="uk-navbar-nav">
+                                <li><a href="index.html">Додому</a></li>
+                                <li><a href="login.html">Login</a></li>
+                                <li id='admin'>
+                                    <a href="#">Admin</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="citymanagement.html">City Management</a></li>
+                                            <li><a href="theatermanagement.html">Theater Management</a></li>
+                                            <li><a href="hallmanagement.html">Hall Management</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+        
+                    </div>
+        
+                </div>
+            </div>
+        </nav>
+
+        
+        <div class="uk-cover-container">
+            <canvas width="559" height="240"></canvas>
+            <img src="images/header.jpg" alt="" uk-cover>
+        </div>
+
+
+        <div class="uk-container">
+            <div class="uk-placeholder"></div>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="jsm/common.js"></script>
+        <script src="jsm/sessions.js"></script>
+
+    </body>
+</html>

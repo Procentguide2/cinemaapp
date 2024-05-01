@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit Cinema</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+</head>
+
+<body onload="init();">
+
+    <nav class="uk-navbar-container">
+        <div class="uk-container">
+            <div uk-navbar>
+    
+                <div class="uk-navbar-center">
+    
+                    <div class="uk-navbar-center-left">
+                        <ul class="uk-navbar-nav">
+                            <li class="uk-active"><a href="#">Cinema Theaters</a></li>
+                            <li>
+                                <a href="#">Menu</a>
+                                <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li class="uk-active"><a href="#">Cinema Theaters</a></li>
+                                        <li><a href="#">Choose a movie</a></li>
+                                        <li><a href="#">choose a cinema</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <a class="uk-navbar-item uk-logo" href="index.html">Movie World</a>
+                    <div class="uk-navbar-center-right">
+                        <ul class="uk-navbar-nav">
+                            <li><a href="#">HOME</a></li>
+                            <li><a href="login.html">Login</a></li>
+                        </ul>
+                    </div>
+    
+                </div>
+    
+            </div>
+        </div>
+    </nav>
+
+    
+    <div class="uk-cover-container">
+        <canvas width="559" height="240"></canvas>
+        <img src="images/header.jpg" alt="" uk-cover>
+    </div>
+
+
+    <div class="uk-container">
+        <div class="uk-placeholder"></div>
+        <button id="UpdateTheatreData">Update</button>
+    </div>
+
+    
+
+    <!-- <div id="cinemaInfo">
+        <h2 id="cinemaName"></h2>
+        <p id="cinemaAddress"></p>
+    </div>
+
+    <div id="sessionsTable">
+        <h2>List of sessions</h2>
+        <table id="sessionsInfo">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody id="sessionsBody">
+                placeholder
+            </tbody>
+        </table>
+        <div class="center" id="public_div">
+            <button id="UpdateTheatreData">Update</button>
+        </div>
+    </div> -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="jsm/common.js"></script>
+    <script src="jsm/edittheatre.js"></script>
+</body>
+
+</html>
