@@ -34,14 +34,20 @@ public class MovieSessionController {
 
     @GetMapping("/sessions/hall/{id}")
     @Operation(summary = "Get sessions by hall id")
-    public List<MovieSessionDtoId> getSessionByHallId(@PathVariable int id){
+    public List<MovieSessionDtoId> getSessionsByHallId(@PathVariable int id){
         return sessionService.findAllByHallId(id);
     }
 
     @GetMapping("/sessions/movie/{id}")
     @Operation(summary = "Get sessions by movie id")
-    public List<MovieSessionDtoId> getSessionByMovieId(@PathVariable int id){
+    public List<MovieSessionDtoId> getSessionsByMovieId(@PathVariable int id){
         return sessionService.findAllByMovieId(id);
+    }
+
+    @GetMapping("/sessions/theater/{id}")
+    @Operation(summary = "Get sessions by theater id")
+    public List<MovieSessionDtoId> getSessionsByTheaterId(@PathVariable int id){
+        return sessionService.findAllByTheaterId(id);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
