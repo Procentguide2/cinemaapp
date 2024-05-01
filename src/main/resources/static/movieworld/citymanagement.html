@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>City Management Form</title>
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="jsm/common.js"></script>
+    <script src="jsm/citymanagement.js"></script>
+</head>
+
+<body>
+    <div class="uk-container uk-container-xsmall">
+            <div class="uk-margin" id="cityNameDiv" style="display: none;">
+                <label for="cityName">City Name:</label>
+                <input type="text" id="cityName" name="cityName" class="uk-input" required>
+            </div>
+
+            <div class="uk-margin">
+                <label for="action">Action:</label>
+                <select id="action" name="action" class="uk-select" required>
+                    <option value="none">Select Action</option>
+                    <option value="add">Add</option>
+                    <option value="edit">Edit</option>
+                    <option value="delete">Delete</option>
+                </select>
+            </div>
+
+            <div class="uk-margin" id="selectCityDiv" style="display: none;">
+                <label for="selectCity">Select City:</label>
+                <select id="selectCity" name="selectCity" class="uk-select" required>
+                </select>
+            </div>
+
+            <div class="uk-margin" id="submitBtnDiv" style="display: none;">
+                <button id="submitButton" class="uk-button uk-button-primary">Submit</button>
+            </div>
+    </div>
+
+</html>
