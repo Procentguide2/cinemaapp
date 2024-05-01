@@ -1,19 +1,16 @@
 package com.example.cinemaapp.dto;
 
-public class TheatreDto {
+public class TheatreDtoCreation {
 
     private String theatreName;
-    private String cityName;
-
     private Integer cityId;
     private String address;
 
-    public TheatreDto() {
+    public TheatreDtoCreation() {
     }
 
-    public TheatreDto(String theatreName, String cityName, Integer cityId, String address) {
+    public TheatreDtoCreation(String theatreName, Integer cityId, String address) {
         this.theatreName = theatreName;
-        this.cityName = cityName;
         this.cityId = cityId;
         this.address = address;
     }
@@ -24,14 +21,6 @@ public class TheatreDto {
 
     public void setTheatreName(String theatreName) {
         this.theatreName = theatreName;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
     }
 
     public Integer getCityId() {

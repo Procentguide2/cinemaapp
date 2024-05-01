@@ -40,7 +40,7 @@ public class HallController {
     @Operation(summary = "Create hall", description = "Create hall in database(need JWT)")
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/halls/create")
-    public void createHall(@RequestBody HallDto hall){
+    public void createHall(@RequestBody HallDto hall) throws Exception {
         hallService.saveHall(hall);
     }
 

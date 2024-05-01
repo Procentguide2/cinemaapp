@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,7 +45,14 @@ public class HallService {
         return hallDtos;
     }
 
-    public void saveHall(HallDto hallDto){
+    public void saveHall(HallDto hallDto) throws Exception {
+
+        Optional<Hall> foundHall = Optional.ofNullable(repository.findByNameAndTheatreId(hallDto.getName(), hallDto.getTheatreId()));
+
+        if(foundHall.isPresent()){
+            throw new Exception("hall with this name already exists in this theatre");
+        }
+
         Hall hall = new Hall();
         Theatre theatre = theatreService.findById(hallDto.getTheatreId());
 
