@@ -3,14 +3,12 @@
 <head>
     <title>Select city</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta http-equiv="refresh" content="0; URL=cityes.html" />
 </head>
-<body>
+<body onload="init();">
+    <!-- https://multiplex.ua/ -->
 
 <select id="cities" autocomplete="off">
-    <option value="">Select city</option>
-    <option value="odessa">Odessa</option>
-    <option value="kiev">Kiev</option>
-    <option value="lutsk">Lutsk</option>
 </select>
 
 <div id="cinemaTable" style="display: none;">
@@ -19,7 +17,7 @@
         <thead>
             <tr>
                 <th>Cinema name</th>
-                <th>Adress</th>
+                <th>Address</th>
                 <th>Seans</th>
             </tr>
         </thead>
@@ -29,7 +27,12 @@
     </table>
 </div>
 
+<!-- <div class="center" id="public_div">
+    <button id="GetCities">Get Cities</button>
+</div> -->
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/common.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
