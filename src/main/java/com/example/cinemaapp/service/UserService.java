@@ -21,14 +21,11 @@ public class UserService {
     public void saveUserFromForm(RegisterForm form) throws Exception {
         Optional<SysUser> foundUser = Optional.ofNullable(sysUserRepository.findByLogin(form.getLogin()));
 
-        if(form.isEmailValid(form.getLogin())){
             if (foundUser.isPresent()){
-                throw new Exception("email is present");
+                throw new Exception("user is present");
             }
             SysUser user = new SysUser(form.getLogin(),form.getPassword(),"default");
             sysUserRepository.save(user);
-        }else {
-            throw new Exception("invalid email");
-        }
+
     }
 }
