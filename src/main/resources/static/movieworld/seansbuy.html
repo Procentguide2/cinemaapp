@@ -25,14 +25,21 @@
                         <div class="uk-navbar-center-right">
                             <ul class="uk-navbar-nav">
                                 <li><a href="index.html">Додому</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li id='admin'>
+                                <li id='admin' style="display: none;">
                                     <a href="#">Admin</a>
                                     <div class="uk-navbar-dropdown">
                                         <ul class="uk-nav uk-navbar-dropdown-nav">
                                             <li><a href="citymanagement.html">City Management</a></li>
                                             <li><a href="theatermanagement.html">Theater Management</a></li>
                                             <li><a href="hallmanagement.html">Hall Management</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><a uk-icon="user"></a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="login.html" id="login-link">Login</a></li>
+                                            <li><a href="" id="logout-link">Logout</a></li>
                                         </ul>
                                     </div>
                                 </li>

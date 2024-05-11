@@ -158,6 +158,7 @@ function renderSessions(sessions) {
         <td><a class="uk-button uk-button-default uk-button-small" href="seansbuy.html?sessionId=[sessionId]">Купити</a></td>
     </tr>
     `;
+    // TODO треба замінити урлу href="seansbuy.html?sessionId=[sessionId]" на логін якщо не залогінений
     console.log(sessions);
     let line = "";
         sessions.forEach(session => {

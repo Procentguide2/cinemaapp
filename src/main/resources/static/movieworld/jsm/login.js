@@ -43,6 +43,6 @@ function submitForm() {
 // для обычного юзера
 
 // {
-//   "username": "alexander",
+//   "username": "testuser",
 //   "password": "123"
 // }
