@@ -201,6 +201,7 @@ function init() {
 }
 
 $(document).ready(function () {
+    IsAdmin() ? $("#admin").show() : $("#admin").hide();
     const urlParams = new URLSearchParams(window.location.search);
     sessionId = urlParams.get('sessionId');
     console.log(sessionId);

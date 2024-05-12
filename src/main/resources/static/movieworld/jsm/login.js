@@ -1,4 +1,6 @@
 function submitForm() {
+    const urlParams = new URLSearchParams(window.location.search);
+    var urlAfterLogin = urlParams.get('urlAfterLogin');
     var login = $('#login').val();
     var password = $('#password').val();
     var mode = $('#mode').val();
@@ -25,7 +27,9 @@ function submitForm() {
             console.log("---------------------");
             console.log(GetToken());
             console.log(IsAdmin());
-            window.location.href = `${getRoot()}`;
+            const to_url = urlAfterLogin ? urlAfterLogin : `${getRoot()}`;
+            window.location.href = to_url;
+
         },
         error: function (error) {
             console.error('ERROR:', error);

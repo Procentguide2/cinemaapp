@@ -155,7 +155,7 @@ function renderSessions(sessions) {
         <td>[hall]</td>
         <td>[cost] ₴</td>
         <td>[startDate]</td>
-        <td><a class="uk-button uk-button-default uk-button-small" href="seansbuy.html?sessionId=[sessionId]">Купити</a></td>
+        <td><a class="uk-button uk-button-default uk-button-small" href="[sessionUrlId]">Купити</a></td>
     </tr>
     `;
     // TODO треба замінити урлу href="seansbuy.html?sessionId=[sessionId]" на логін якщо не залогінений
@@ -170,7 +170,9 @@ function renderSessions(sessions) {
                 line = line.replace('[name]', movie.movieName );
                 line = line.replace('[cost]', session.cost );
                 line = line.replace('[startDate]', convertDateFormat(session.startDate));
-                line = line.replace('[sessionId]', session.id );
+                var urlAfterLogin = `seansbuy.html?sessionId=${session.id}`
+                const url_to = HasLogin() ? `seansbuy.html?sessionId=${session.id}` : `login.html?urlAfterLogin=${urlAfterLogin}`;
+                line = line.replace('[sessionUrlId]', url_to);
                 lines += line;
             }
         });
@@ -211,6 +213,7 @@ function addEventHendlers() {
 }
 
 $(document).ready(function () {
+    IsAdmin() ? $("#admin").show() : $("#admin").hide();
     const urlParams = new URLSearchParams(window.location.search);
     cinemaId = urlParams.get('cinemaId');
     debug = urlParams.get('debug');
