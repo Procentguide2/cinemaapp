@@ -12,9 +12,11 @@ function submitForm() {
         password: password
     };
 
+    mode = mode === "login" ? "authenticate" : "register";
+
     $.ajax({
         type: 'POST',
-        url: `${getHost()}user/authenticate`,
+        url: `${getHost()}user/${mode}`,
         data: JSON.stringify(requestData),
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
         success: function (response) {
@@ -27,6 +29,7 @@ function submitForm() {
         },
         error: function (error) {
             console.error('ERROR:', error);
+            $('#error').text(error.responseJSON.errorMessage);
         }
     });
 

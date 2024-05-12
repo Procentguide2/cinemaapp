@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login and Registration Form</title>
     <link rel="stylesheet" type="text/css" href="cssm/login.css">
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
 </head>
 
 <body>
@@ -17,13 +20,19 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" value="123" required>
 
-        <label for="mode">Mode:</label>
-        <select id="mode" name="mode">
-            <option value="login">Login</option>
-            <option value="register">Register</option>
-        </select>
-
-        <button type="button" onclick="submitForm()">Submit</button>
+        <center>
+            <label for="mode">Mode:</label>
+            <select id="mode" name="mode">
+                <option value="login">Login</option>
+                <option value="register">Register</option>
+            </select>
+        </center>
+        <center>
+            <label></label>
+            <button type="button" onclick="submitForm()">Submit</button>
+            <label></label>
+            <span class="uk-label uk-label-danger" id="error"></span>
+        </center>
     </form>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
