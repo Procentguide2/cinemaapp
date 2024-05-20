@@ -1,0 +1,28 @@
+<br/>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+</head>
+<body>
+    <div class="uk-flex uk-flex-center uk-flex-middle uk-height-1-1">
+        <div class="uk-text-center">
+            <h1 class="uk-text-uppercase uk-heading-hero uk-margin-remove">Шикарний вибір</h1>
+            <h2 class="uk-text-uppercase uk-margin-remove">Бажаемо гарного відпочінку</h2>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        sessionId = urlParams.get('sessionId');
+        setTimeout(function() {
+            window.location.href = `seansbuy.html?sessionId=${sessionId}`;
+        }, 2000);
+    </script>
+</body>
+</html>

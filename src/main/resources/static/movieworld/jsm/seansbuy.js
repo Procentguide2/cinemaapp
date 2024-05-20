@@ -231,7 +231,7 @@ $(document).ready(function () {
                 .then((data) => {
                     console.log(data);
                     if (index === seatNumbers.length - 1) {
-                        location.reload();
+                        window.location.href = `buycomplete.html?sessionId=${sessionId}`;
                     }
                 });
             }, index * delay);
