@@ -15,14 +15,28 @@
         <div class="uk-text-center">
             <h1 class="uk-text-uppercase uk-heading-hero uk-margin-remove">Шикарний вибір</h1>
             <h2 class="uk-text-uppercase uk-margin-remove">Бажаемо гарного відпочінку</h2>
+            <br/><br/><br/>
+            <h3 class="uk-text-uppercase uk-margin-remove" id="code">Код вашего бронювання хххххх</h3>
+            <div class="uk-margin-top" style="margin-top: 20px;">
+                <br/>
+                <button class="uk-button uk-button-primary" id="go-to-session">Перейти до сеансу</button>
+            </div>
         </div>
     </div>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         sessionId = urlParams.get('sessionId');
-        setTimeout(function() {
+
+        function generateRandomCode() {
+          const randomCode = Math.floor(100000 + Math.random() * 900000);
+          document.querySelector('#code').innerHTML = `Код вашего бронювання <b style="font-size: 1.2em">${randomCode}</b>`;
+        }
+
+        generateRandomCode();
+
+        document.getElementById('go-to-session').addEventListener('click', function() {
             window.location.href = `seansbuy.html?sessionId=${sessionId}`;
-        }, 2000);
+        });
     </script>
 </body>
 </html>

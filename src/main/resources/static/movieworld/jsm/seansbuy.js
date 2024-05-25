@@ -211,9 +211,10 @@ $(document).ready(function () {
     UpdateSeansData();
 
     $('#buyButton').click(function() {
+        $(this).prop('disabled', true);
         console.log("BUY", seatNumbers);
     
-        const delay = 500;
+        const delay = 32;
     
         seatNumbers.forEach((seatNumber, index) => {
             setTimeout(() => {
