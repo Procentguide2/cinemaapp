@@ -214,7 +214,7 @@ $(document).ready(function () {
         $(this).prop('disabled', true);
         console.log("BUY", seatNumbers);
     
-        const delay = 32;
+        const delay = 400;
     
         seatNumbers.forEach((seatNumber, index) => {
             setTimeout(() => {
