@@ -128,4 +128,6 @@ $(document).ready(function () {
         $('.uk-placeholder').hide();
         $('#UpdateTheatreData').hide();
     }
+    
+    IsAdmin() ? $("#admin").show() : $("#admin").hide();
 });

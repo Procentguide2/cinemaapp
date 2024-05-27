@@ -17,32 +17,39 @@
             <div uk-navbar>
     
                 <div class="uk-navbar-center">
-    
                     <div class="uk-navbar-center-left">
                         <ul class="uk-navbar-nav">
-                            <li class="uk-active"><a href="#">Cinema Theaters</a></li>
-                            <li>
-                                <a href="#">Menu</a>
-                                <div class="uk-navbar-dropdown">
-                                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                                        <li class="uk-active"><a href="#">Cinema Theaters</a></li>
-                                        <li><a href="#">Choose a movie</a></li>
-                                        <li><a href="#">choose a cinema</a></li>
-                                    </ul>
-                                </div>
-                            </li>
+                            <li class="uk-active"><a href="index.html">Cinema Theaters</a></li>
                         </ul>
                     </div>
                     <a class="uk-navbar-item uk-logo" href="index.html">Movie World</a>
                     <div class="uk-navbar-center-right">
                         <ul class="uk-navbar-nav">
-                            <li><a href="#">HOME</a></li>
-                            <li><a href="login.html">Login</a></li>
+                            <li><a href="index.html">Додому</a></li>
+                            <li id='admin' style="display: none;">
+                                <a href="#">Admin</a>
+                                <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li><a href="citymanagement.html">City Management</a></li>
+                                        <li><a href="theatermanagement.html">Theater Management</a></li>
+                                        <li><a href="hallmanagement.html">Hall Management</a></li>
+                                        <li><a href="moviemanagement.html">Movie Management</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a uk-icon="user"></a>
+                                <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li><a href="login.html" id="login-link">Login</a></li>
+                                        <li><a href="" id="logout-link">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                         </ul>
                     </div>
-    
+
                 </div>
-    
+                
             </div>
         </div>
     </nav>

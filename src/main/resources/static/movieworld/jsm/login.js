@@ -1,4 +1,6 @@
 function submitForm() {
+    const urlParams = new URLSearchParams(window.location.search);
+    var urlAfterLogin = urlParams.get('urlAfterLogin');
     var login = $('#login').val();
     var password = $('#password').val();
     var mode = $('#mode').val();
@@ -12,9 +14,11 @@ function submitForm() {
         password: password
     };
 
+    mode = mode === "login" ? "authenticate" : "register";
+
     $.ajax({
         type: 'POST',
-        url: `${getHost()}user/authenticate`,
+        url: `${getHost()}user/${mode}`,
         data: JSON.stringify(requestData),
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
         success: function (response) {
@@ -23,10 +27,13 @@ function submitForm() {
             console.log("---------------------");
             console.log(GetToken());
             console.log(IsAdmin());
-            window.location.href = `${getRoot()}`;
+            const to_url = urlAfterLogin ? urlAfterLogin : `${getRoot()}`;
+            window.location.href = to_url;
+
         },
         error: function (error) {
             console.error('ERROR:', error);
+            $('#error').text(error.responseJSON.errorMessage);
         }
     });
 
@@ -43,6 +50,6 @@ function submitForm() {
 // для обычного юзера
 
 // {
-//   "username": "alexander",
+//   "username": "testuser",
 //   "password": "123"
 // }

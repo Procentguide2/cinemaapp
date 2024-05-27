@@ -9,6 +9,39 @@ function getRoot() {
 }
 
 
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+        document.cookie = name + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+    window.location.href = `${getRoot()}`;
+}
+
+try {
+    document.getElementById('logout-link').addEventListener('click', function(event) {
+        event.preventDefault();
+        deleteAllCookies();
+    });
+} catch (error) {
+    console.log(error);
+}
+
+try {
+    HasLogin() ? $("#logout-link").show() : $("#logout-link").hide();
+} catch (error) {
+    console.log(error);
+}
+
+try {
+    HasLogin() ? $("#login-link").hide() : $("#login-link").show();
+} catch (error) {
+    console.log(error);
+}
+
 
 
 function SetToken(token, admin) {
@@ -35,6 +68,14 @@ function IsAdmin() {
         ?.split("=")[1];
 
     return isAdmin == "true" ? true : false;
+}
+
+function HasLogin() {
+    const isAccess = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("access_token="))
+        ?.split("=")[1];
+    return isAccess ? true : false;
 }
 
 const LoadData = async (_url, optons = {}) => {

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movie Management Form</title>
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="jsm/common.js"></script>
+    <script src="jsm/moviemanagement.js"></script>
+</head>
+
+<body>
+    <div class="uk-container uk-container-xsmall">
+            <div class="uk-margin" id="movieDataDiv" style="display: none;">
+
+                <label for="movieName">Movie Name:</label>
+                <input type="text" id="movieName" name="movieName" class="uk-input" required>
+
+
+                <label for="image">Image:</label>
+                <input type="text" id="image" name="image" class="uk-input" required>
+
+                <label for="year">Year:</label>
+                <input type="text" id="year" name="year" class="uk-input" required>
+
+                <label for="director">Director:</label>
+                <input type="text" id="director" name="director" class="uk-input" required>
+
+                <label for="studio">Studio:</label>
+                <input type="text" id="studio" name="studio" class="uk-input" required>
+
+                <label for="rate">Rate:</label>
+                <input type="text" id="rate" name="rate" class="uk-input" required>
+
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age" class="uk-input" required>
+            </div>
+
+            <div class="uk-margin" id="selectMovieDiv" style="display: none;">
+                <label for="selectMovie">Select movie:</label>
+                <select id="selectMovie" name="selectMovie" class="uk-select" required>
+                </select>
+            </div>
+
+            <div class="uk-margin">
+                <label for="action">Action:</label>
+                <select id="action" name="action" class="uk-select" required>
+                    <option value="none">Select Action</option>
+                    <option value="add">Add</option>
+                    <option value="edit">Edit</option>
+                    <option value="delete">Delete</option>
+                </select>
+            </div>
+
+            <div class="uk-margin" id="submitBtnDiv" style="display: none;">
+                <button id="submitButton" class="uk-button uk-button-primary">Submit</button>
+            </div>
+    </div>
+
+</html>

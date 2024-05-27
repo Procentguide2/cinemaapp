@@ -21,25 +21,25 @@ public class HallService {
     @Autowired
     TheatreService theatreService;
 
-    public Hall findById(int id){
+    public Hall findById(int id) {
         return repository.findById(id).get();
     }
 
-    public HallDto findDtoById(int id){
+    public HallDto findDtoById(int id) {
         Hall hall = findById(id);
-        return new HallDto(hall.getName(),hall.getSeats(),hall.getTheatre().getId());
+        return new HallDto(hall.getName(), hall.getSeats(), hall.getTheatre().getId(), hall.getTheatre().getName());
     }
 
-    public List<HallDto> findDtoByTheatreId(int id){
+    public List<HallDto> findDtoByTheatreId(int id) {
         return findAll().stream().filter(hallDto -> id == hallDto.getTheatreId()).collect(Collectors.toList());
     }
 
-    public List<HallDtoId> findAll(){
+    public List<HallDtoId> findAll() {
         List<Hall> halls = repository.findAll();
         List<HallDtoId> hallDtos = new ArrayList<>();
 
-        for (Hall hall : halls){
-            HallDtoId hallDtoId = new HallDtoId(hall.getName(),hall.getSeats(),hall.getTheatre().getId(),hall.getId());
+        for (Hall hall : halls) {
+            HallDtoId hallDtoId = new HallDtoId(hall.getName(), hall.getSeats(), hall.getTheatre().getId(), hall.getId(), hall.getTheatre().getName());
             hallDtos.add(hallDtoId);
         }
         return hallDtos;
@@ -49,7 +49,7 @@ public class HallService {
 
         Optional<Hall> foundHall = Optional.ofNullable(repository.findByNameAndTheatreId(hallDto.getName(), hallDto.getTheatreId()));
 
-        if(foundHall.isPresent()){
+        if (foundHall.isPresent()) {
             throw new Exception("hall with this name already exists in this theatre");
         }
 
@@ -64,7 +64,7 @@ public class HallService {
     }
 
 
-    public void deleteHall(int id){
+    public void deleteHall(int id) {
         Hall toDelete = findById(id);
         repository.delete(toDelete);
     }

@@ -201,6 +201,7 @@ function init() {
 }
 
 $(document).ready(function () {
+    IsAdmin() ? $("#admin").show() : $("#admin").hide();
     const urlParams = new URLSearchParams(window.location.search);
     sessionId = urlParams.get('sessionId');
     console.log(sessionId);
@@ -208,8 +209,6 @@ $(document).ready(function () {
     debug = debug == 'true' ? true : false;
 
     UpdateSeansData();
-
-    IsAdmin() ? $("#admin").show() : $("#admin").hide();
 
     $('#buyButton').click(function() {
         console.log("BUY", seatNumbers);
@@ -232,7 +231,7 @@ $(document).ready(function () {
                 .then((data) => {
                     console.log(data);
                     if (index === seatNumbers.length - 1) {
-                        location.reload();
+                        window.location.href = `buycomplete.html?sessionId=${sessionId}`;
                     }
                 });
             }, index * delay);
