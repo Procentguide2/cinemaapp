@@ -35,7 +35,8 @@ public class MovieSessionService {
                 convertToArrayList(movieSession.getAvailableSeats()),
                 movieSession.getHall().getSeats(),
                 movieSession.getMovie().getId(),
-                movieSession.getHall().getId());
+                movieSession.getHall().getId(),
+                movieSession.getMovie().getMovieName());
 
     }
 
@@ -151,7 +152,8 @@ public class MovieSessionService {
                     convertToArrayList(session.getAvailableSeats()),
                     session.getHall().getSeats(),
                     session.getMovie().getId(),
-                    session.getHall().getId(),session.getId());
+                    session.getHall().getId(),session.getId(),
+                    session.getMovie().getMovieName());
             dtos.add(dto);
         }
 

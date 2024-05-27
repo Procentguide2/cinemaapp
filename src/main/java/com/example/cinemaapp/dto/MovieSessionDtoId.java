@@ -11,8 +11,8 @@ public class MovieSessionDtoId extends MovieSessionDto{
     }
 
 
-    public MovieSessionDtoId(Instant startDate, Float cost, List<Integer> availableSeats, Integer totalSeats, Integer movieId, Integer hallId, Integer id) {
-        super(startDate, cost, availableSeats, totalSeats, movieId, hallId);
+    public MovieSessionDtoId(Instant startDate, Float cost, List<Integer> availableSeats, Integer totalSeats, Integer movieId, Integer hallId, Integer id, String movieName) {
+        super(startDate, cost, availableSeats, totalSeats, movieId, hallId, movieName);
         this.id = id;
     }
 
