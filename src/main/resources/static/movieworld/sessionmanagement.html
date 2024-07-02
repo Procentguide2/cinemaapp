@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Session Management Form</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="jsm/common.js"></script>
+    <script src="jsm/sessionmanagement.js"></script>
+</head>
+
+<body>
+    <div class="uk-container uk-container-xsmall">
+            <div class="uk-margin" id="movieDataDiv" style="display: none;">
+
+                <div class="uk-form-row">
+                    <label class="uk-form-label" for="startDate">Start Date:</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="startDate" type="datetime-local">
+                    </div>
+                </div>
+
+                <label for="cost">Cost:</label>
+                <input type="text" id="cost" name="cost" class="uk-input" required>
+                
+                <label for="selectMovie">Select movie:</label>
+                <select id="selectMovie" name="selectMovie" class="uk-select" required>
+                </select>
+
+                <label for="selectHall">Select Hall:</label>
+                <select id="selectHall" name="selectHall" class="uk-select" required>
+                </select>
+                
+            </div>
+
+            <div class="uk-margin" id="selectSessionDiv" style="display: none;">
+                <label for="selectSession">Select Session:</label>
+                <select id="selectSession" name="selectSession" class="uk-select" required>
+                </select>
+            </div>
+
+            <div class="uk-margin">
+                <label for="action">Action:</label>
+                <select id="action" name="action" class="uk-select" required>
+                    <option value="none">Select Action</option>
+                    <option value="add">Add</option>
+                    <!-- <option value="edit">Edit</option> -->
+                    <option value="delete">Delete</option>
+                </select>
+            </div>
+
+            <div class="uk-margin" id="submitBtnDiv" style="display: none;">
+                <button id="submitButton" class="uk-button uk-button-primary">Submit</button>
+            </div>
+
+            <div class="uk-margin" id="testBtnDiv">
+                <button id="testButton" class="uk-button uk-button-primary">test</button>
+            </div>
+    </div>
+
+</html>

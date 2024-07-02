@@ -115,3 +115,19 @@ async function LoadDataAsync(_url, optons = {}){
     }
     return data
 }
+
+function convertDateFormat(inputDate) {
+    const monthNames = [
+      "січня", "лютого", "березня", "квітня", "травня", "червня",
+      "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"
+    ];
+  
+    const date = new Date(inputDate);
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+  
+    const formattedDate = `${day} ${monthNames[monthIndex]} ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+    return formattedDate;
+}
